@@ -537,12 +537,18 @@ class Carousel {
     const selector = Util.getSelectorFromElement(this)
 
     if (!selector) {
+      if (this.href && this.href.indexOf('javascript:') === 0) {
+          event.preventDefault();
+      }
       return
     }
 
     const target = $(selector)[0]
 
     if (!target || !$(target).hasClass(CLASS_NAME_CAROUSEL)) {
+      if (this.href && this.href.indexOf('javascript:') === 0) {
+          event.preventDefault();
+      }
       return
     }
 
