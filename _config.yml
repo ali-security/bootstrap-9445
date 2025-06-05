@@ -36,8 +36,8 @@ social_image_path:  /docs/4.5/assets/brand/bootstrap-social.png
 social_logo_path:   /docs/4.5/assets/brand/bootstrap-social-logo.png
 
 # Custom variables
-current_version:      4.5.2
-current_ruby_version: 4.5.2
+current_version:      4.5.2-sp1
+current_ruby_version: 4.5.2-sp1
 docs_version:         4.5
 github_org:           "https://github.com/twbs"
 repo:                 "https://github.com/twbs/bootstrap"
