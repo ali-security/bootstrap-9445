@@ -1,4 +1,5 @@
-name: Bundlewatch
+
+name: seal_ci
 on: [push, pull_request]
 env:
   CI: true
@@ -29,11 +30,23 @@ jobs:
       - name: Install npm dependencies
         run: npm ci
 
+      - name: Build CSS
+        run: npm run css
+      
+      - name: Run dist
+        run: npm run js
+
+      - name: Run JS tests
+        run: npm run js-test
+
       - name: Run dist
         run: npm run dist
-        
-      - name: Run bundlewatch
-        run: npm run bundlewatch
-        env:
-          BUNDLEWATCH_GITHUB_TOKEN: "${{ secrets.BUNDLEWATCH_GITHUB_TOKEN }}"
-          CI_BRANCH_BASE: v4-dev
+
+      - name: create tar.gz
+        run: tar -czvf bootstrap-4.5.2-sp1.tgz dist/
+
+      - name: "Upload tgz files"
+        uses: actions/upload-artifact@v4
+        with:
+          name: bootstrap-v4.5.2-sp1-dist
+          path: "**/*.tgz"
