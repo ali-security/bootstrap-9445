@@ -49,10 +49,12 @@ jobs:
           ls -Al dist-sass/css
 
       - name: create tar.gz
-        run: tar -czvf bootstrap-4.5.2-sp1.tgz scss/ dist/ package.json README.md LICENSE
+        run: |
+          tar -czvf package.tgz scss/ js/ dist/ package.json README.md LICENSE
+          mv package.tgz bootstrap-4.5.2-sp1.tgz
 
       - name: "Upload tgz files"
         uses: actions/upload-artifact@v4
         with:
-          name: bootstrap-v4.5.2-sp1-dist
+          name: bootstrap-4.5.2-sp1
           path: "**/*.tgz"
