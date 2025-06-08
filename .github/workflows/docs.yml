@@ -11,7 +11,7 @@ jobs:
 
     steps:
       - name: Clone repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Set Node.js version
         uses: actions/setup-node@v1
@@ -30,7 +30,7 @@ jobs:
           bundle config set deployment 'true'
 
       - name: Set up Ruby cache
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         with:
           path: vendor/bundle
           key: ${{ runner.os }}-ruby-v${{ env.RUBY }}-${{ hashFiles('Gemfile') }}-${{ hashFiles('Gemfile.lock') }}
@@ -39,7 +39,7 @@ jobs:
             ${{ runner.os }}-ruby-v${{ env.RUBY }}-
 
       - name: Set up npm cache
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         with:
           path: ~/.npm
           key: ${{ runner.os }}-node-v${{ env.NODE }}-${{ hashFiles('package.json') }}-${{ hashFiles('package-lock.json') }}
