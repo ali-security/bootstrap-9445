@@ -42,6 +42,12 @@ jobs:
       - name: Run dist
         run: npm run dist
 
+      - name: Build CSS with Dart Sass
+        run: |
+          npx --package sass@latest sass --version
+          npx --package sass@latest sass --style expanded --source-map --embed-sources --no-error-css scss/:dist-sass/css/
+          ls -Al dist-sass/css
+
       - name: create tar.gz
         run: tar -czvf bootstrap-4.5.2-sp1.tgz dist/
 
